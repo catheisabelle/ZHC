@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Grade 3: Numbers</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+    }
+
+    header {
+      background-color: #fff;
+      padding: 20px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 2px solid #e0e0e0;
+    }
+
+    .progress-bar {
+      width: 80%;
+      height: 5px;
+      background-color: #e0e0e0;
+      margin: 20px auto;
+      position: relative;
+      border-radius: 10px;
+    }
+
+    .progress-bar .fill {
+      height: 100%;
+      background-color: #6a5acd;
+      width: 0%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-radius: 10px;
+      transition: width 0.5s ease-in-out;
+    }
+
+    .content {
+      padding: 30px;
+      max-width: 800px;
+      margin: 0 auto;
+      display: none;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+
+    .note, .analogy {
+      background-color: #f5f5f5;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .button {
+      background-color: #6a5acd;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #5a4db8;
+      transform: scale(1.05);
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .nav-buttons button {
+      width: 120px;
+    }
+
+    .close-button {
+      font-size: 24px;
+      color: black;
+      text-decoration: none;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .header-title {
+      font-size: 24px;
+      text-align: center;
+      flex-grow: 1;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#" class="close-button">X</a>
+    <h1 class="header-title">Count in 1s, 10s, 100s, and steps of 2, 3, 4, 5</h1>
+  </header>
+
+  <div class="progress-bar">
+    <div class="fill" id="progressFill"></div>
+  </div>
+
+  <!-- Page 0 -->
+  <div class="content" id="page0" style="display: block;">
+    <div class="note">Let’s Learn to Count!</div>
+    <div class="analogy">
+      Counting means naming numbers in the correct order. You can count by 1s, 10s, 100s, or in steps of 2, 3, 4, and 5 to make counting faster!
+    </div>
+  </div>
+
+  <!-- Page 1 -->
+  <div class="content" id="page1">
+    <div class="note">Counting in 1s</div>
+    <div class="analogy">
+      Counting by 1s means counting one number at a time. 
+      <br><br><strong>Here’s how:</strong>
+      <p>Start at 1 and keep going: 1, 2, 3, 4, 5… all the way to 1000!</p>
+      <button id="start1Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 2 -->
+  <div class="content" id="page2">
+    <div class="note">Counting in 10s</div>
+    <div class="analogy">
+      Counting by 10s means adding 10 each time. 
+      <br><br><strong>Here’s how:</strong>
+      <p>Start at 10 and count by tens: 10, 20, 30, 40, 50… all the way to 1000!</p>
+      <button id="start2Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 3 -->
+  <div class="content" id="page3">
+    <div class="note">Counting in 100s</div>
+    <div class="analogy">
+      Counting by 100s means adding 100 each time. 
+      <br><br><strong>Here’s how:</strong>
+      <p>Start at 100 and count by hundreds: 100, 200, 300, 400… all the way to 1000!</p>
+      <button id="start3Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 4 -->
+  <div class="content" id="page4">
+    <div class="note">Counting in Steps of 2</div>
+    <div class="analogy">
+      Counting by 2 means adding 2 each time. 
+      <br><br><strong>Here’s how:</strong>
+      <p>Start at 2 and count by twos: 2, 4, 6, 8, 10… all the way up!</p>
+      <button id="start4Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 5 -->
+  <div class="content" id="page5">
+    <div class="note">Counting in Steps of 3</div>
+    <div class="analogy">
+      Counting by 3 means adding 3 each time. 
+      <br><br><strong>Here’s how:</strong>
+      <p>Start at 3 and count by threes: 3, 6, 9, 12… all the way up!</p>
+      <button id="start5Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 6 -->
+  <div class="content" id="page6">
+    <div class="note">Counting in Steps of 4</div>
+    <div class="analogy">
+      Counting by 4 means adding 4 each time. 
+      <br><br><strong>Here’s how:</strong>
+      <p>Start at 4 and count by fours: 4, 8, 12, 16… all the way up!</p>
+      <button id="start6Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 7 -->
+  <div class="content" id="page7">
+    <div class="note">Counting in Steps of 5</div>
+    <div class="analogy">
+      Counting by 5 means adding 5 each time. 
+      <br><br><strong>Here’s how:</strong>
+      <p>Start at 5 and count by fives: 5, 10, 15, 20… all the way up!</p>
+      <button id="start7Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <div class="nav-buttons">
+    <button class="button" onclick="prevPage()">Back</button>
+    <button class="button" onclick="nextPage()">Next</button>
+  </div>
+
+  <script>
+    const progressFill = document.getElementById('progressFill');
+    const pages = document.querySelectorAll('.content');
+    let currentPage = 0;
+
+    // Function to go to the next page
+    function nextPage() {
+      if (currentPage < pages.length - 1) {
+        pages[currentPage].style.display = 'none';
+        currentPage++;
+        pages[currentPage].style.display = 'block';
+        progressFill.style.width = ((currentPage + 1) / pages.length) * 100 + '%';
+      }
+    }
+
+    // Function to go to the previous page
+    function prevPage() {
+      if (currentPage > 0) {
+        pages[currentPage].style.display = 'none';
+        currentPage--;
+        pages[currentPage].style.display = 'block';
+        progressFill.style.width = ((currentPage + 1) / pages.length) * 100 + '%';
+      }
+    }
+  </script>
+</body>
+</html>

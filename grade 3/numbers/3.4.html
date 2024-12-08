@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Grade 3: Numbers</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+    }
+
+    header {
+      background-color: #fff;
+      padding: 20px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 2px solid #e0e0e0;
+    }
+
+    .progress-bar {
+      width: 80%;
+      height: 5px;
+      background-color: #e0e0e0;
+      margin: 20px auto;
+      position: relative;
+      border-radius: 10px;
+    }
+
+    .progress-bar .fill {
+      height: 100%;
+      background-color: #6a5acd;
+      width: 0%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-radius: 10px;
+      transition: width 0.5s ease-in-out;
+    }
+
+    .content {
+      padding: 30px;
+      max-width: 800px;
+      margin: 0 auto;
+      display: none;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+
+    .note, .analogy {
+      background-color: #f5f5f5;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .button {
+      background-color: #6a5acd;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #5a4db8;
+      transform: scale(1.05);
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .nav-buttons button {
+      width: 120px;
+    }
+
+    .close-button {
+      font-size: 24px;
+      color: black;
+      text-decoration: none;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .header-title {
+      font-size: 24px;
+      text-align: center;
+      flex-grow: 1;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#" class="close-button">X</a>
+    <h1 class="header-title">Find 1, 10, 100 More/Less Than Numbers</h1>
+  </header>
+
+  <div class="progress-bar">
+    <div class="fill" id="progressFill"></div>
+  </div>
+
+  <!-- Page 0 -->
+  <div class="content" id="page0" style="display: block;">
+    <div class="note">Let’s Learn How to Find 1, 10, and 100 More/Less!</div>
+    <div class="analogy">
+      More means adding, and less means subtracting.
+    </div>
+  </div>
+
+  <!-- Page 1 -->
+  <div class="content" id="page1">
+    <div class="note">Finding 1 More/Less</div>
+    <div class="analogy">
+      <strong>1 More:</strong> To find 1 more, just add 1 to the number.
+      <br><br><strong>Example:</strong>
+      <p>What is 1 more than 253? <br>253 + 1 = 254. So, 1 more than 253 is 254.</p>
+      <br><strong>1 Less:</strong> To find 1 less, just subtract 1 from the number.
+      <br><br><strong>Example:</strong>
+      <p>What is 1 less than 253? <br>253 - 1 = 252. So, 1 less than 253 is 252.</p>
+      <button id="start1Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 2 -->
+  <div class="content" id="page2">
+    <div class="note">Finding 10 More/Less</div>
+    <div class="analogy">
+      <strong>10 More:</strong> To find 10 more, just add 10 to the number.
+      <br><br><strong>Example:</strong>
+      <p>What is 10 more than 253? <br>253 + 10 = 263. So, 10 more than 253 is 263.</p>
+      <br><strong>10 Less:</strong> To find 10 less, just subtract 10 from the number.
+      <br><br><strong>Example:</strong>
+      <p>What is 10 less than 253? <br>253 - 10 = 243. So, 10 less than 253 is 243.</p>
+      <button id="start2Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 3 -->
+  <div class="content" id="page3">
+    <div class="note">Finding 100 More/Less</div>
+    <div class="analogy">
+      <strong>100 More:</strong> To find 100 more, just add 100 to the number.
+      <br><br><strong>Example:</strong>
+      <p>What is 100 more than 253? <br>253 + 100 = 353. So, 100 more than 253 is 353.</p>
+      <br><strong>100 Less:</strong> To find 100 less, just subtract 100 from the number.
+      <br><br><strong>Example:</strong>
+      <p>What is 100 less than 253? <br>253 - 100 = 153. So, 100 less than 253 is 153.</p>
+      <button id="start3Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <div class="nav-buttons">
+    <button class="button" onclick="prevPage()">Back</button>
+    <button class="button" onclick="nextPage()">Next</button>
+  </div>
+
+  <script>
+    const progressFill = document.getElementById('progressFill');
+    const pages = document.querySelectorAll('.content');
+    let currentPage = 0;
+
+    // Function to go to the next page
+    function nextPage() {
+      if (currentPage < pages.length - 1) {
+        pages[currentPage].style.display = 'none';
+        currentPage++;
+        pages[currentPage].style.display = 'block';
+        progressFill.style.width = ((currentPage + 1) / pages.length) * 100 + '%';
+      }
+    }
+
+    // Function to go to the previous page
+    function prevPage() {
+      if (currentPage > 0) {
+        pages[currentPage].style.display = 'none';
+        currentPage--;
+        pages[currentPage].style.display = 'block';
+        progressFill.style.width = ((currentPage + 1) / pages.length) * 100 + '%';
+      }
+    }
+  </script>
+</body>
+</html>

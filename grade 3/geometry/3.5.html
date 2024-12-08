@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Grade 3: Geometry</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+    }
+
+    header {
+      background-color: #fff;
+      padding: 20px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 2px solid #e0e0e0;
+    }
+
+    .progress-bar {
+      width: 80%;
+      height: 5px;
+      background-color: #e0e0e0;
+      margin: 20px auto;
+      position: relative;
+      border-radius: 10px;
+    }
+
+    .progress-bar .fill {
+      height: 100%;
+      background-color: #6a5acd;
+      width: 0%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-radius: 10px;
+      transition: width 0.5s ease-in-out;
+    }
+
+    .content {
+      padding: 30px;
+      max-width: 800px;
+      margin: 0 auto;
+      display: none;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+
+    .note, .analogy {
+      background-color: #f5f5f5;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .button {
+      background-color: #6a5acd;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #5a4db8;
+      transform: scale(1.05);
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .nav-buttons button {
+      width: 120px;
+    }
+
+    .close-button {
+      font-size: 24px;
+      color: black;
+      text-decoration: none;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .header-title {
+      font-size: 24px;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    ol {
+      padding-left: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#" class="close-button">X</a>
+    <h1 class="header-title">Clockwise and Anti-clockwise Movement</h1>
+  </header>
+
+  <div class="progress-bar">
+    <div class="fill" id="progressFill"></div>
+  </div>
+
+  <!-- Page 0: Introduction -->
+  <div class="content" id="page0" style="display: block;">
+    <div class="note">Let’s learn about clockwise and anti-clockwise movement!</div>
+    <div class="analogy">
+        Clockwise means moving in the same direction as the hands of a clock, and anti-clockwise means moving the opposite direction.
+    </div>
+  </div>  
+
+  <!-- Page 1: Clockwise Movement -->
+  <div class="content" id="page1">
+    <div class="note">Clockwise Movement</div>
+    <div class="analogy">
+      <strong>Clockwise:</strong> Moving in the same direction as the hands of a clock.
+      <br><br>
+      <strong>Example:</strong> If you point up and turn to the right, you’re moving clockwise.
+      <br><br>
+      <button id="start1Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 2: Anti-clockwise Movement -->
+  <div class="content" id="page2">
+    <div class="note">Anti-clockwise Movement</div>
+    <div class="analogy">
+      <strong>Anti-clockwise:</strong> Moving in the opposite direction of the hands of a clock.
+      <br><br>
+      <strong>Example:</strong> If you point up and turn to the left, you’re moving anti-clockwise.
+      <br><br>
+      <button id="start2Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 3: Describing Movement -->
+  <div class="content" id="page3">
+    <div class="note">Describing Movement</div>
+    <div class="analogy">
+      <strong>To describe movement:</strong>
+      <ol>
+        <li><strong>Clockwise:</strong> Turn your body to the right in a circle. That’s moving clockwise.</li>
+        <li><strong>Anti-clockwise:</strong> Now turn your body to the left in a circle. That’s moving anti-clockwise.</li>
+      </ol>
+      <button id="start3Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 4: Describing Position -->
+  <div class="content" id="page4">
+    <div class="note">Describing Position</div>
+    <div class="analogy">
+      <strong>To describe position:</strong>
+      <ul>
+        <li>If someone is standing to your right, they are clockwise from you.</li>
+        <li>If someone is standing to your left, they are anti-clockwise from you.</li>
+      </ul>
+      <button id="start4Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <div class="nav-buttons">
+    <button class="button" onclick="prevPage()">Back</button>
+    <button class="button" onclick="nextPage()">Next</button>
+  </div>
+
+  <script>
+    const progressFill = document.getElementById('progressFill');
+    const pages = document.querySelectorAll('.content');
+    let currentPage = 0;
+
+    // Function to go to the next page
+    function nextPage() {
+      if (currentPage < pages.length - 1) {
+        pages[currentPage].style.display = 'none';
+        currentPage++;
+        pages[currentPage].style.display = 'block';
+        progressFill.style.width = ((currentPage + 1) / pages.length) * 100 + '%';
+      }
+    }
+
+    // Function to go to the previous page
+    function prevPage() {
+      if (currentPage > 0) {
+        pages[currentPage].style.display = 'none';
+        currentPage--;
+        pages[currentPage].style.display = 'block';
+        progressFill.style.width = ((currentPage + 1) / pages.length) * 100 + '%';
+      }
+    }
+  </script>
+</body>
+</html>

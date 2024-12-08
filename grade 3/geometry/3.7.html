@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Grade 3: Geometry</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+    }
+
+    header {
+      background-color: #fff;
+      padding: 20px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 2px solid #e0e0e0;
+    }
+
+    .progress-bar {
+      width: 80%;
+      height: 5px;
+      background-color: #e0e0e0;
+      margin: 20px auto;
+      position: relative;
+      border-radius: 10px;
+    }
+
+    .progress-bar .fill {
+      height: 100%;
+      background-color: #6a5acd;
+      width: 0%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-radius: 10px;
+      transition: width 0.5s ease-in-out;
+    }
+
+    .content {
+      padding: 30px;
+      max-width: 800px;
+      margin: 0 auto;
+      display: none;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+
+    .note, .analogy {
+      background-color: #f5f5f5;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .button {
+      background-color: #6a5acd;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #5a4db8;
+      transform: scale(1.05);
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .nav-buttons button {
+      width: 120px;
+    }
+
+    .close-button {
+      font-size: 24px;
+      color: black;
+      text-decoration: none;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .header-title {
+      font-size: 24px;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    ol {
+      padding-left: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#" class="close-button">X</a>
+    <h1 class="header-title">Comparing Angles with Right Angle</h1>
+  </header>
+
+  <div class="progress-bar">
+    <div class="fill" id="progressFill"></div>
+  </div>
+
+  <!-- Page 0: Introduction -->
+  <div class="content" id="page0" style="display: block;">
+    <div class="note">Let’s learn about comparing angles with a right angle!</div>
+    <div class="analogy">
+      A right angle is exactly 90 degrees. Let's compare it to other angles:
+      <ul>
+        <li><strong>Acute angle:</strong> Smaller than a right angle (less than 90°).</li>
+        <li><strong>Obtuse angle:</strong> Larger than a right angle (greater than 90°).</li>
+      </ul>
+    </div>
+  </div>  
+
+  <!-- Page 1: Right Angle -->
+  <div class="content" id="page1">
+    <div class="note">Right Angle</div>
+    <div class="analogy">
+      A right angle is an angle of 90 degrees. It forms an "L" shape, like the corner of a square or a piece of paper.
+      <br><br>
+      <strong>Example:</strong> A right angle is exactly 90°.
+      <br><br>
+      <button id="start1Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 2: Acute Angle -->
+  <div class="content" id="page2">
+    <div class="note">Acute Angle</div>
+    <div class="analogy">
+      An acute angle is smaller than a right angle. It is any angle less than 90°.
+      <br><br>
+      <strong>Example:</strong> An acute angle might be 45°.
+      <br><br>
+      <button id="start2Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 3: Obtuse Angle -->
+  <div class="content" id="page3">
+    <div class="note">Obtuse Angle</div>
+    <div class="analogy">
+      An obtuse angle is larger than a right angle but smaller than 180°. It is any angle between 90° and 180°.
+      <br><br>
+      <strong>Example:</strong> An obtuse angle might be 120°.
+      <br><br>
+      <button id="start3Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <div class="nav-buttons">
+    <button class="button" onclick="prevPage()">Back</button>
+    <button class="button" onclick="nextPage()">Next</button>
+  </div>
+
+  <script>
+    const progressFill = document.getElementById('progressFill');
+    const pages = document.querySelectorAll('.content');
+    let currentPage = 0;
+
+    // Function to go to the next page
+    function nextPage() {
+      if (currentPage < pages.length - 1) {
+        pages[currentPage].style.display = 'none';
+        currentPage++;
+        pages[currentPage].style.display = 'block';
+        progressFill.style.width = ((currentPage + 1) / pages.length) * 100 + '%';
+      }
+    }
+
+    // Function to go to the previous page
+    function prevPage() {
+      if (currentPage > 0) {
+        pages[currentPage].style.display = 'none';
+        currentPage--;
+        pages[currentPage].style.display = 'block';
+        progressFill.style.width = ((currentPage + 1) / pages.length) * 100 + '%';
+      }
+    }
+  </script>
+</body>
+</html>

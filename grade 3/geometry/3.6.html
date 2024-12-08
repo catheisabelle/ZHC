@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Grade 3: Geometry</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+    }
+
+    header {
+      background-color: #fff;
+      padding: 20px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 2px solid #e0e0e0;
+      width: 100%;
+    }
+
+    .progress-bar {
+      width: 80%;
+      height: 5px;
+      background-color: #e0e0e0;
+      margin: 20px auto;
+      position: relative;
+      border-radius: 10px;
+    }
+
+    .progress-bar .fill {
+      height: 100%;
+      background-color: #6a5acd;
+      width: 0%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-radius: 10px;
+      transition: width 0.5s ease-in-out;
+    }
+
+    .content {
+      padding: 30px;
+      max-width: 800px;
+      margin: 0 auto;
+      display: none;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+
+    .note, .analogy {
+      background-color: #f5f5f5;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .button {
+      background-color: #6a5acd;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #5a4db8;
+      transform: scale(1.05);
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .nav-buttons button {
+      width: 120px;
+    }
+
+    .close-button {
+      font-size: 24px;
+      color: black;
+      text-decoration: none;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .header-title {
+      font-size: 24px;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    ol {
+      padding-left: 40px;
+    }
+
+    /* Center the grid using flexbox */
+    .grid-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .grid-example {
+      display: grid;
+      grid-template-columns: repeat(5, 50px);
+      grid-template-rows: repeat(5, 50px);
+      gap: 2px;
+    }
+
+    .grid-cell {
+      width: 50px;
+      height: 50px;
+      background-color: #e0e0e0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Hover effect */
+    .grid-cell:hover {
+      background-color: #444444;  /* Dark grey */
+      color: white; /* Change text color to white on hover */
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#" class="close-button">X</a>
+    <h1 class="header-title">Finding Positions on Grids</h1>
+  </header>
+
+  <div class="progress-bar">
+    <div class="fill" id="progressFill"></div>
+  </div>
+
+  <!-- Page 0: Introduction -->
+  <div class="content" id="page0" style="display: block;">
+    <div class="note">Let’s learn about finding positions on grids!</div>
+    <div class="analogy">
+        A grid is a set of squares arranged in rows and columns, like a checkerboard. We use numbers and letters to describe positions on the grid.
+    </div>
+  </div>  
+
+  <!-- Page 1: Understanding Rows and Columns -->
+  <div class="content" id="page1">
+    <div class="note">Rows and Columns</div>
+    <div class="analogy">
+      <strong>Rows</strong> go across (side to side), and <strong>columns</strong> go up and down.
+      <br><br>
+      Example: In a grid, the rows might have numbers (1, 2, 3…) and the columns might have letters (A, B, C…).
+      <br><br>
+      <button id="start1Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 2: Finding a Square Using Coordinates -->
+  <div class="content" id="page2">
+    <div class="note">Finding a Square Using Coordinates</div>
+    <div class="analogy">
+      To find a square, look at the row and column it’s in.
+      <br><br>
+      Example: If the position is <strong>B3</strong>, start in column B and go to row 3. That’s your square!
+      <br><br>
+      <button id="start2Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 3: Grid Example -->
+  <div class="content" id="page3">
+    <div class="note">Grid Example</div>
+    <div class="analogy">
+      Here’s a simple 5x5 grid. You can find squares by looking at their coordinates.
+      <!-- Centered Grid -->
+      <div class="grid-container">
+        <div class="grid-example">
+          <div class="grid-cell">A1</div><div class="grid-cell">B1</div><div class="grid-cell">C1</div><div class="grid-cell">D1</div><div class="grid-cell">E1</div>
+          <div class="grid-cell">A2</div><div class="grid-cell">B2</div><div class="grid-cell">C2</div><div class="grid-cell">D2</div><div class="grid-cell">E2</div>
+          <div class="grid-cell">A3</div><div class="grid-cell">B3</div><div class="grid-cell">C3</div><div class="grid-cell">D3</div><div class="grid-cell">E3</div>
+          <div class="grid-cell">A4</div><div class="grid-cell">B4</div><div class="grid-cell">C4</div><div class="grid-cell">D4</div><div class="grid-cell">E4</div>
+          <div class="grid-cell">A5</div><div class="grid-cell">B5</div><div class="grid-cell">C5</div><div class="grid-cell">D5</div><div class="grid-cell">E5</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <div class="nav-buttons">
+    <button class="button" onclick="prevPage()">Back</button>
+    <button class="button" onclick="nextPage()">Next</button>
+  </div>
+
+  <script>
+    const progressFill = document.getElementById('progressFill');
+    const pages = document.querySelectorAll('.content');
+    let currentPage = 0;
+
+    // Function to go to the next page
+    function nextPage() {
+      if (currentPage < pages.length - 1) {
+        pages[currentPage].style.display = 'none';
+        currentPage++;
+        pages[currentPage].style.display = 'block';
+        progressFill.style.width = ((currentPage + 1) / pages.length) * 100 + '%';
+      }
+    }
+
+    // Function to go to the previous page
+    function prevPage() {
+      if (currentPage > 0) {
+        pages[currentPage].style.display = 'none';
+        currentPage--;
+        pages[currentPage].style.display = 'block';
+        progressFill.style.width = ((currentPage + 1) / pages.length) * 100 + '%';
+      }
+    }
+  </script>
+</body>
+</html>
