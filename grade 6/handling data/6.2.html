@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grade 6: Handling Data</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+    }
+
+    header {
+      background-color: #fff;
+      padding: 20px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 2px solid #e0e0e0;
+    }
+
+    .progress-bar {
+      width: 80%;
+      height: 5px;
+      background-color: #e0e0e0;
+      margin: 20px auto;
+      position: relative;
+      border-radius: 10px;
+    }
+
+    .progress-bar .fill {
+      height: 100%;
+      background-color: #6a5acd;
+      width: 0%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-radius: 10px;
+      transition: width 0.5s ease-in-out;
+    }
+
+    .content {
+      padding: 30px;
+      max-width: 800px;
+      margin: 0 auto;
+      display: none;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+
+    .note, .analogy {
+      background-color: #f5f5f5;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .button {
+      background-color: #6a5acd;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #5a4db8;
+      transform: scale(1.05);
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .nav-buttons button {
+      width: 120px;
+    }
+
+    .close-button {
+      font-size: 24px;
+      color: black;
+      text-decoration: none;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .header-title {
+      font-size: 24px;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    img {
+      display: block;
+      margin: 20px auto;
+      max-width: 45%;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#" class="close-button">X</a>
+    <h1 class="header-title">Finding the Mode, Range, Median, and Mean of a Data Set</h1>
+  </header>
+
+  <div class="progress-bar">
+    <div class="fill" id="progressFill"></div>
+  </div>
+
+  <!-- Page 1: Mode -->
+  <div class="content" id="page1" style="display: block;">
+    <div class="note">Mode of a Data Set</div>
+    <div class="analogy">
+      <strong>Mode:</strong><br>
+      The mode is the number that appears most frequently in a data set.<br><br>
+      <strong>Example of Mode:</strong>
+      <ul>
+        <li>Data: 3, 5, 7, 5, 2, 5, 8</li>
+        <li>The mode is <strong>5</strong> because it appears three times, more than any other number.</li>
+      </ul>
+      <button id="Start1Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 2: Range -->
+  <div class="content" id="page2">
+    <div class="note">Range of a Data Set</div>
+    <div class="analogy">
+      <strong>Range:</strong><br>
+      The range is the difference between the highest and lowest values in the data set.<br>
+      <strong>Formula: Range = Highest value - Lowest value</strong><br><br>
+
+      <strong>Example of Range:</strong>
+      <ul>
+        <li>Data: 8, 3, 12, 5, 10</li>
+        <li>Highest value = <strong>12</strong>, Lowest value = <strong>3</strong></li>
+        <li>Range = <strong>12 - 3 = 9</strong></li>
+      </ul>
+      <button id="Start2Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 3: Median -->
+  <div class="content" id="page3">
+    <div class="note">Median of a Data Set</div>
+    <div class="analogy">
+      <strong>Median:</strong><br>
+      The median is the middle number of a data set when the numbers are arranged in ascending (smallest to largest) or descending (largest to smallest) order.<br><br>
+      <strong>Steps to find the Median:</strong>
+      <ul>
+        <li>Sort the numbers from least to greatest.</li>
+        <li>If there is an odd number of numbers, the median is the middle number.</li>
+        <li>If there is an even number of numbers, the median is the average of the two middle numbers.</li>
+      </ul>
+      <strong>Example (Odd Number of Data):</strong>
+      <ul>
+        <li>Data: 5, 3, 8, 6, 7</li>
+        <li>Sort: 3, 5, 6, 7, 8</li>
+        <li>The median is 6 (the middle number).</li>
+      </ul>
+      <strong>Example (Even Number of Data):</strong>
+      <ul>
+        <li>Data: 3, 8, 7, 5, 6, 9</li>
+        <li>Sort: 3, 5, 6, 7, 8, 9</li>
+        <li>The middle numbers are 6 and 7, so:</li>
+        <li>Median = (6 + 7) ÷ 2 = 6.5</li>
+      </ul>
+      <button id="Start3Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 4: Mean -->
+  <div class="content" id="page4">
+    <div class="note">Mean of a Data Set</div>
+    <div class="analogy">
+      <strong>Mean:</strong><br>
+      The mean is the average of a data set.<br>
+      <strong>Formula: Mean = (Sum of all numbers) ÷ (Number of values)</strong><br><br>
+      <strong>Steps to find the Mean:</strong>
+      <ul>
+        <li>Add all the numbers together.</li>
+        <li>Divide the total by the number of values in the data set.</li>
+      </ul>
+      <strong>Example:</strong>
+      <ul>
+        <li>Data: 5, 8, 7, 10, 6</li>
+        <li>Add: 5 + 8 + 7 + 10 + 6 = 36</li>
+        <li>Divide: 36 ÷ 5 = <strong>7.2</strong></li>
+      </ul>
+      <button id="Start4Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <div class="nav-buttons">
+    <button class="button" onclick="prevPage()">Back</button>
+    <button class="button" onclick="nextPage()">Next</button>
+  </div>
+
+  <script>
+    const progressFill = document.getElementById('progressFill');
+    const pages = document.querySelectorAll('.content');
+    let currentPage = 0;
+
+    // Function to go to the next page
+    function nextPage() {
+      if (currentPage < pages.length - 1) {
+        pages[currentPage].style.display = 'none';
+        currentPage++;
+        pages[currentPage].style.display = 'block';
+        progressFill.style.width = ((currentPage + 1) / pages.length) * 100 + '%';
+      }
+    }
+
+    // Function to go to the previous page
+    function prevPage() {
+      if (currentPage > 0) {
+        pages[currentPage].style.display = 'none';
+        currentPage--;
+        pages[currentPage].style.display = 'block';
+        progressFill.style.width = ((currentPage + 1) / pages.length) * 100 + '%';
+      }
+    }
+  </script>
+</body>
+</html>

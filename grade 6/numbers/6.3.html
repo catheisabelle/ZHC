@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grade 6: Numbers</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+    }
+
+    header {
+      background-color: #fff;
+      padding: 20px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 2px solid #e0e0e0;
+    }
+
+    .progress-bar {
+      width: 80%;
+      height: 5px;
+      background-color: #e0e0e0;
+      margin: 20px auto;
+      position: relative;
+      border-radius: 10px;
+    }
+
+    .progress-bar .fill {
+      height: 100%;
+      background-color: #6a5acd;
+      width: 0%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-radius: 10px;
+      transition: width 0.5s ease-in-out;
+    }
+
+    .content {
+      padding: 30px;
+      max-width: 800px;
+      margin: 0 auto;
+      display: none;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+
+    .note, .analogy {
+      background-color: #f5f5f5;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .button {
+      background-color: #6a5acd;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #5a4db8;
+      transform: scale(1.05);
+    }
+
+    img {
+      display: block;
+      margin: 20px auto;
+      max-width: 45%;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .nav-buttons button {
+      width: 120px;
+    }
+
+    .close-button {
+      font-size: 24px;
+      color: black;
+      text-decoration: none;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .header-title {
+      font-size: 24px;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    /* Table styles */
+    table {
+      width: 90%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background-color: #fff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #6a5acd;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #e0e0e0;
+    }
+
+    .caption {
+      font-weight: bold;
+      background-color: #6a5acd;
+      color: white;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#" class="close-button">X</a>
+    <h1 class="header-title">Multiplying, Dividing, and Rounding with 10, 100, and 1000</h1>
+  </header>
+
+  <div class="progress-bar">
+    <div class="fill" id="progressFill"></div>
+  </div>
+
+  <!-- Page 0: Introduction -->
+  <div class="content" id="page0" style="display: block;">
+    <div class="note">Let’s learn how to multiply and divide by 10, 100, and 1000, and how to round numbers and decimals!</div>
+    <div class="analogy">
+      These skills help us work with large and small numbers in math easily.
+    </div>
+  </div>
+
+  <!-- Page 1: Multiplying by 10, 100, and 1000 -->
+  <div class="content" id="page1">
+    <div class="note">Multiplying by 10, 100, and 1000</div>
+    <div class="analogy">
+      <strong>Multiplying by 10:</strong> Move the decimal point one place to the right.
+      <ul>
+        <li>Example: 3 × 10 = 30</li>
+        <li>Example: 2.5 × 10 = 25.0</li>
+      </ul>
+      <br>
+      <strong>Multiplying by 100:</strong> Move the decimal point two places to the right.
+      <ul>
+        <li>Example: 4 × 100 = 400</li>
+        <li>Example: 3.2 × 100 = 320.0</li>
+      </ul>
+      <br>
+      <strong>Multiplying by 1000:</strong> Move the decimal point three places to the right.
+      <ul>
+        <li>Example: 5 × 1000 = 5000</li>
+        <li>Example: 1.75 × 1000 = 1750</li>
+      </ul>
+      <button id="start1Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 2: Dividing by 10, 100, and 1000 -->
+  <div class="content" id="page2">
+    <div class="note">Dividing by 10, 100, and 1000</div>
+    <div class="analogy">
+      <strong>Dividing by 10:</strong> Move the decimal point one place to the left.
+      <ul>
+        <li>Example: 30 ÷ 10 = 3</li>
+        <li>Example: 25 ÷ 10 = 2.5</li>
+      </ul>
+      <br>
+      <strong>Dividing by 100:</strong> Move the decimal point two places to the left.
+      <ul>
+        <li>Example: 400 ÷ 100 = 4</li>
+        <li>Example: 320 ÷ 100 = 3.2</li>
+      </ul>
+      <br>
+      <strong>Dividing by 1000:</strong> Move the decimal point three places to the left.
+      <ul>
+        <li>Example: 5000 ÷ 1000 = 5</li>
+        <li>Example: 1750 ÷ 1000 = 1.75</li>
+      </ul>
+      <button id="start2Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 3: Rounding Whole Numbers -->
+  <div class="content" id="page3">
+    <div class="note">Rounding Whole Numbers</div>
+    <div class="analogy">
+      <strong>Steps to round whole numbers:</strong>
+      <ul>
+        <li>Look at the digit to the right of the place value you are rounding to.</li>
+        <li>If it’s 5 or higher, round up. If it’s 4 or lower, round down.</li>
+      </ul>
+      <br>
+      <strong>Example:</strong> Round 436 to the nearest ten.
+      <br>
+      Answer: 440 (because the 6 is higher than 5).<br><br>
+      <button id="start3Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 4: Rounding Decimals -->
+  <div class="content" id="page4">
+    <div class="note">Rounding Decimals</div>
+    <div class="analogy">
+      <strong>To round a decimal to the nearest tenth:</strong> Look at the hundredths place.
+      <br>
+      <strong>Example:</strong> Round 3.67 to the nearest tenth.
+      <br>
+      Answer: 3.7 (because the 7 in the hundredths place is greater than 5).
+      <br><br>
+      <strong>To round to the nearest whole number:</strong> Look at the tenths place.
+      <br>
+      <strong>Example:</strong> Round 5.44 to the nearest whole number.
+      <br>
+      Answer: 5 (because the 4 in the tenths place is less than 5). <br><br>
+      <button id="start4Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <div class="nav-buttons">
+    <button class="button" onclick="prevPage()">Back</button>
+    <button class="button" onclick="nextPage()">Next</button>
+  </div>
+
+  <script>
+    const progressFill = document.getElementById('progressFill');
+    const pages = document.querySelectorAll('.content');
+    let currentPage = 0;
+
+    // Function to go to the next page
+    function nextPage() {
+      if (currentPage < pages.length - 1) {
+        pages[currentPage].style.display = 'none';
+        currentPage++;
+        pages[currentPage].style.display = 'block';
+        progressFill.style.width = ((currentPage + 1) / pages.length) * 100 + '%';
+      }
+    }
+
+    // Function to go to the previous page
+    function prevPage() {
+      if (currentPage > 0) {
+        pages[currentPage].style.display = 'none';
+        currentPage--;
+        pages[currentPage].style.display = 'block';
+        progressFill.style.width = ((currentPage + 1) / pages.length) * 100 + '%';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grade 6: Measure</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+    }
+
+    header {
+      background-color: #fff;
+      padding: 20px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 2px solid #e0e0e0;
+    }
+
+    .progress-bar {
+      width: 80%;
+      height: 5px;
+      background-color: #e0e0e0;
+      margin: 20px auto;
+      position: relative;
+      border-radius: 10px;
+    }
+
+    .progress-bar .fill {
+      height: 100%;
+      background-color: #6a5acd;
+      width: 0%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-radius: 10px;
+      transition: width 0.5s ease-in-out;
+    }
+
+    .content {
+      padding: 30px;
+      max-width: 800px;
+      margin: 0 auto;
+      display: none;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+
+    .note, .analogy {
+      background-color: #f5f5f5;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .button {
+      background-color: #6a5acd;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #5a4db8;
+      transform: scale(1.05);
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .nav-buttons button {
+      width: 120px;
+    }
+
+    .close-button {
+      font-size: 24px;
+      color: black;
+      text-decoration: none;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .header-title {
+      font-size: 24px;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#" class="close-button">X</a>
+    <h1 class="header-title">Understanding and Converting Time Units</h1>
+  </header>
+
+  <div class="progress-bar">
+    <div class="fill" id="progressFill"></div>
+  </div>
+
+  <!-- Page 1: Time Units -->
+  <div class="content" id="page1" style="display: block;">
+    <div class="note"><strong>Time Units</strong></div>
+    <div class="analogy">
+      <ul>
+        <li><strong>Seconds (s):</strong> The smallest unit of time.</li>
+        <li><strong>Minutes (min):</strong> 1 minute = 60 seconds.</li>
+        <li><strong>Hours (h):</strong> 1 hour = 60 minutes = 3600 seconds.</li>
+        <li><strong>Days (d):</strong> 1 day = 24 hours.</li>
+        <li><strong>Weeks (w):</strong> 1 week = 7 days.</li>
+        <li><strong>Months (mo):</strong> The number of days in a month varies (28-31 days).</li>
+        <li><strong>Years (yr):</strong> 1 year = 12 months = 365 or 366 days (leap year).</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Page 2: Converting Seconds to Minutes -->
+  <div class="content" id="page2">
+    <div class="note"><strong>Converting Seconds to Minutes</strong></div>
+    <div class="analogy">
+      <strong>60 seconds = 1 minute</strong><br>
+      <strong>Example:</strong><br>
+      Convert 120 seconds to minutes: <br>
+      120 ÷ 60 = <strong>2 minutes</strong>
+      <br><br>
+      <button id="Start1Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 3: Converting Minutes to Hours -->
+  <div class="content" id="page3">
+    <div class="note"><strong>Converting Minutes to Hours</strong></div>
+    <div class="analogy">
+      <strong>60 minutes = 1 hour</strong><br>
+      <strong>Example:</strong><br>
+      Convert 150 minutes to hours: <br>
+      150 ÷ 60 = <strong>2.5 hours</strong>
+      <br><br>
+      <button id="Start2Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 4: Converting Hours to Days -->
+  <div class="content" id="page4">
+    <div class="note"><strong>Converting Hours to Days</strong></div>
+    <div class="analogy">
+      <strong>24 hours = 1 day</strong><br>
+      <strong>Example:</strong><br>
+      Convert 48 hours to days: <br>
+      48 ÷ 24 = <strong>2 days</strong>
+      <br><br>
+      <button id="Start3Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 5: Converting Days to Weeks -->
+  <div class="content" id="page5">
+    <div class="note"><strong>Converting Days to Weeks</strong></div>
+    <div class="analogy">
+      <strong>7 days = 1 week</strong><br>
+      <strong>Example:</strong><br>
+      Convert 14 days to weeks: <br>
+      14 ÷ 7 = <strong>2 weeks</strong>
+      <br><br>
+      <button id="Start4Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 6: Converting Days to Hours -->
+  <div class="content" id="page6">
+    <div class="note"><strong>Converting Days to Hours</strong></div>
+    <div class="analogy">
+      <strong>1 day = 24 hours</strong><br>
+      <strong>Example:</strong><br>
+      Convert 3 days to hours: <br>
+      3 × 24 = <strong>72 hours</strong>
+      <br><br>
+      <button id="Start5Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 7: Additional Time Conversions -->
+  <div class="content" id="page7">
+    <div class="note"><strong>Additional Time Conversions</strong></div>
+    <div class="analogy">
+      <ul>
+        <li>1 hour = 60 minutes = 3600 seconds</li>
+        <li>1 day = 24 hours = 1440 minutes = 86400 seconds</li>
+        <li>1 week = 7 days = 168 hours = 10080 minutes = 604800 seconds</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="nav-buttons">
+    <button class="button" onclick="prevPage()">Back</button>
+    <button class="button" onclick="nextPage()">Next</button>
+  </div>
+
+  <script>
+    const progressFill = document.getElementById('progressFill');
+    const pages = document.querySelectorAll('.content');
+    let currentPage = 0;
+
+    // Function to go to the next page
+    function nextPage() {
+      if (currentPage < pages.length - 1) {
+        pages[currentPage].style.display = 'none';
+        currentPage++;
+        pages[currentPage].style.display = 'block';
+        progressFill.style.width = ((currentPage + 1) / pages.length) * 100 + '%';
+      }
+    }
+
+    // Function to go to the previous page
+    function prevPage() {
+      if (currentPage > 0) {
+        pages[currentPage].style.display = 'none';
+        currentPage--;
+        pages[currentPage].style.display = 'block';
+        progressFill.style.width = ((currentPage + 1) / pages.length) * 100 + '%';
+      }
+    }
+  </script>
+</body>
+</html>
