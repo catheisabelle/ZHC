@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grade 5: Numbers</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+    }
+
+    header {
+      background-color: #fff;
+      padding: 20px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 2px solid #e0e0e0;
+    }
+
+    .progress-bar {
+      width: 80%;
+      height: 5px;
+      background-color: #e0e0e0;
+      margin: 20px auto;
+      position: relative;
+      border-radius: 10px;
+    }
+
+    .progress-bar .fill {
+      height: 100%;
+      background-color: #6a5acd;
+      width: 0%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-radius: 10px;
+      transition: width 0.5s ease-in-out;
+    }
+
+    .content {
+      padding: 30px;
+      max-width: 800px;
+      margin: 0 auto;
+      display: none;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+
+    .note, .analogy {
+      background-color: #f5f5f5;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .button {
+      background-color: #6a5acd;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #5a4db8;
+      transform: scale(1.05);
+    }
+
+    img {
+      display: block;
+      margin: 20px auto;
+      max-width: 45%;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .img2 {
+      width: 150px;
+      height: auto;
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .nav-buttons button {
+      width: 120px;
+    }
+
+    .close-button {
+      font-size: 24px;
+      color: black;
+      text-decoration: none;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .header-title {
+      font-size: 24px;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    /* Table styles */
+    table {
+      width: 90%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background-color: #fff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #6a5acd;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #e0e0e0;
+    }
+
+    .caption {
+      font-weight: bold;
+      background-color: #6a5acd;
+      color: white;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#" class="close-button">X</a>
+    <h1 class="header-title">Order and Compare Numbers</h1>
+  </header>
+
+  <div class="progress-bar">
+    <div class="fill" id="progressFill"></div>
+  </div>
+
+  <!-- Page 0: Introduction -->
+  <div class="content" id="page0" style="display: block;">
+    <div class="note">Let’s learn how to order and compare numbers!</div>
+    <div class="analogy">
+      These skills help us understand how numbers relate to each other.
+    </div>
+  </div>
+
+  <!-- Page 1: How to Compare Whole Numbers -->
+  <div class="content" id="page1">
+    <div class="note">How to Compare Whole Numbers</div>
+    <div class="analogy">
+      <ul>
+        <li>To compare whole numbers, look at the leftmost digits.</li>
+        <li>The larger number is the one with the bigger digit in that place.</li>
+      </ul>
+      <strong>Example:</strong> 50 is greater than 30 because 5 is bigger than 3.
+      <br><br>
+      <button id="start1Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 2: How to Compare Negative Numbers -->
+  <div class="content" id="page2">
+    <div class="note">How to Compare Negative Numbers</div>
+    <div class="analogy">
+      <ul>
+        <li>For negative numbers, the smaller the number, the more negative it is.</li>
+        <li>The number farther from zero is smaller.</li>
+      </ul>
+      <strong>Example:</strong> -7 is less than -3 because -7 is farther from zero.
+      <br><br>
+      <button id="start2Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 3: How to Compare Decimal Numbers -->
+  <div class="content" id="page3">
+    <div class="note">How to Compare Decimal Numbers</div>
+    <div class="analogy">
+      <ul>
+        <li>To compare decimals, start from the left and compare each place value (tenths, hundredths, thousandths).</li>
+        <li>The number with the higher digit in the first place that differs is greater.</li>
+      </ul>
+      <strong>Example:</strong> 3.56 is greater than 3.45 because 5 is greater than 4 in the hundredths place.
+      <br><br>
+      <button id="start3Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 4: How to Compare Fractions -->
+  <div class="content" id="page4">
+    <div class="note">How to Compare Fractions</div>
+    <div class="analogy">
+      <ul>
+        <li>If the denominators are the same, the fraction with the bigger numerator is greater.</li>
+      </ul>
+      <strong>Example:</strong> 3/5 is greater than 2/5 because 3 is greater than 2.
+      <br><br>
+      <button id="start4Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 5: How to Order Whole Numbers -->
+  <div class="content" id="page5">
+    <div class="note">How to Order Whole Numbers</div>
+    <div class="analogy">
+      <ul>
+        <li>To order whole numbers from smallest to largest, list them by their place value.</li>
+      </ul>
+      <strong>Example:</strong> Order 8, 3, 15, 7 from smallest to largest: 3, 7, 8, 15.
+      <br><br>
+      <button id="start5Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 6: How to Order Negative Numbers -->
+  <div class="content" id="page6">
+    <div class="note">How to Order Negative Numbers</div>
+    <div class="analogy">
+      <ul>
+        <li>Order negative numbers by their distance from zero. The number closer to zero is larger.</li>
+      </ul>
+      <strong>Example:</strong> Order -2, -5, -3, -1 from smallest to largest: -5, -3, -2, -1.
+      <br><br>
+      <button id="start6Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 7: How to Order Decimal Numbers -->
+  <div class="content" id="page7">
+    <div class="note">How to Order Decimal Numbers</div>
+    <div class="analogy">
+      <ul>
+        <li>Order decimals by comparing digits from left to right.</li>
+      </ul>
+      <strong>Example:</strong> Order 0.6, 0.55, 0.7, 0.65 from smallest to largest: 0.55, 0.6, 0.65, 0.7.
+      <br><br>
+      <button id="start7Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 8: How to Order Fractions -->
+  <div class="content" id="page8">
+    <div class="note">How to Order Fractions</div>
+    <div class="analogy">
+      <ul>
+        <li>If the fractions have different denominators, convert them to the same denominator or convert them to decimals to compare.</li>
+      </ul>
+      <strong>Example:</strong> Order 1/2, 2/3, 3/4 from smallest to largest: 1/2, 2/3, 3/4.
+      <br><br>
+      <button id="start8Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <div class="nav-buttons">
+    <button class="button" onclick="prevPage()">Back</button>
+    <button class="button" onclick="nextPage()">Next</button>
+  </div>
+
+  <script>
+    const progressFill = document.getElementById('progressFill');
+    const pages = document.querySelectorAll('.content');
+    let currentPage = 0;
+
+    // Function to go to the next page
+    function nextPage() {
+      if (currentPage < pages.length - 1) {
+        pages[currentPage].style.display = 'none';
+        currentPage++;
+        pages[currentPage].style.display = 'block';
+        progressFill.style.width = ((currentPage + 1) / pages.length) * 100 + '%';
+      }
+    }
+
+    // Function to go to the previous page
+    function prevPage() {
+      if (currentPage > 0) {
+        pages[currentPage].style.display = 'none';
+        currentPage--;
+        pages[currentPage].style.display = 'block';
+        progressFill.style.width = ((currentPage + 1) / pages.length) * 100 + '%';
+      }
+    }
+  </script>
+</body>
+</html>

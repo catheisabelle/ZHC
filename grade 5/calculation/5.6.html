@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grade 5: Calculation</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+    }
+
+    header {
+      background-color: #fff;
+      padding: 20px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 2px solid #e0e0e0;
+    }
+
+    .progress-bar {
+      width: 80%;
+      height: 5px;
+      background-color: #e0e0e0;
+      margin: 20px auto;
+      position: relative;
+      border-radius: 10px;
+    }
+
+    .progress-bar .fill {
+      height: 100%;
+      background-color: #6a5acd;
+      width: 0%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-radius: 10px;
+      transition: width 0.5s ease-in-out;
+    }
+
+    .content {
+      padding: 30px;
+      max-width: 800px;
+      margin: 0 auto;
+      display: none;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+
+    .note, .analogy {
+      background-color: #f5f5f5;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .button {
+      background-color: #6a5acd;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #5a4db8;
+      transform: scale(1.05);
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .nav-buttons button {
+      width: 120px;
+    }
+
+    .close-button {
+      font-size: 24px;
+      color: black;
+      text-decoration: none;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .header-title {
+      font-size: 24px;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#" class="close-button">X</a>
+    <h1 class="header-title">Brackets, Order of Operations, and Arithmetic Laws</h1>
+  </header>
+
+  <div class="progress-bar">
+    <div class="fill" id="progressFill"></div>
+  </div>
+
+  <!-- Page 0: Introduction -->
+  <div class="content" id="page0" style="display: block;">
+    <div class="note">Let’s learn how to use brackets to order operations and apply arithmetic laws!</div>
+    <div class="analogy">
+      <p>Brackets are used to group numbers and operations, helping us solve math problems in a clear order.</p>
+    </div>
+  </div>
+
+  <!-- Page 1: What are Brackets? -->
+  <div class="content" id="page1">
+    <div class="note">What are Brackets?</div>
+    <div class="analogy">
+      <p>Brackets (also called parentheses) are symbols used to group numbers and operations in a math problem. They tell you which part of the problem to solve first.</p>
+      <p><strong>Example:</strong> In the expression (3 + 5) × 2, you must solve 3 + 5 first because it is inside the brackets.</p>
+      <button id="start1Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 2: Order of Operations (PEMDAS) -->
+  <div class="content" id="page2">
+    <div class="note">Order of Operations (PEMDAS)</div>
+    <div class="analogy">
+      <p>PEMDAS is the order you follow when solving math problems:</p>
+      <ul>
+        <li><strong>P</strong>: Parentheses (solve inside brackets first)</li>
+        <li><strong>E</strong>: Exponents (powers or square roots)</li>
+        <li><strong>MD</strong>: Multiplication and Division (from left to right)</li>
+        <li><strong>AS</strong>: Addition and Subtraction (from left to right)</li>
+      </ul>
+      <p><strong>Example:</strong> (2 + 3) × 4 - 6 ÷ 2</p>
+      <ol>
+        <li>Step 1: Solve inside the brackets: (2 + 3) = 5</li>
+        <li>Step 2: Multiply 5 by 4 = 20</li>
+        <li>Step 3: Divide 6 by 2 = 3</li>
+        <li>Step 4: Subtract 3 from 20 = 17</li>
+      </ol>
+      <button id="start2Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 3: Commutative Property -->
+  <div class="content" id="page3">
+    <div class="note">Commutative Property</div>
+    <div class="analogy">
+      <p>The commutative property tells us that the order of numbers doesn’t matter for addition and multiplication.</p>
+      <ul>
+        <li><strong>Addition:</strong> 3 + 5 = 5 + 3</li>
+        <li><strong>Multiplication:</strong> 4 × 2 = 2 × 4</li>
+      </ul>
+      <p>You can swap the numbers around in addition and multiplication without changing the result.</p>
+      <button id="start3Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 4: Associative Property -->
+  <div class="content" id="page4">
+    <div class="note">Associative Property</div>
+    <div class="analogy">
+      <p>The associative property tells us that the way numbers are grouped doesn’t matter for addition and multiplication.</p>
+      <ul>
+        <li><strong>Addition:</strong> (2 + 3) + 4 = 2 + (3 + 4)</li>
+        <li><strong>Multiplication:</strong> (5 × 2) × 3 = 5 × (2 × 3)</li>
+      </ul>
+      <p>You can change how numbers are grouped in addition and multiplication without changing the result.</p>
+      <button id="start4Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 5: Distributive Property -->
+  <div class="content" id="page5">
+    <div class="note">Distributive Property</div>
+    <div class="analogy">
+      <p>The distributive property tells us how multiplication distributes over addition.</p>
+      <p><strong>Example:</strong> 3 × (4 + 5) = (3 × 4) + (3 × 5)</p>
+      <p>Multiply 3 by both 4 and 5, then add the results.</p>
+      <button id="start5Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <div class="nav-buttons">
+    <button class="button" onclick="prevPage()">Back</button>
+    <button class="button" onclick="nextPage()">Next</button>
+  </div>
+
+  <script>
+    const progressFill = document.getElementById('progressFill');
+    const pages = document.querySelectorAll('.content');
+    let currentPage = 0;
+
+    // Function to go to the next page
+    function nextPage() {
+      if (currentPage < pages.length - 1) {
+        pages[currentPage].style.display = 'none';
+        currentPage++;
+        pages[currentPage].style.display = 'block';
+        progressFill.style.width = ((currentPage + 1) / pages.length) * 100 + '%';
+      }
+    }
+
+    // Function to go to the previous page
+    function prevPage() {
+      if (currentPage > 0) {
+        pages[currentPage].style.display = 'none';
+        currentPage--;
+        pages[currentPage].style.display = 'block';
+        progressFill.style.width = ((currentPage + 1) / pages.length) * 100 + '%';
+      }
+    }
+  </script>
+</body>
+</html>

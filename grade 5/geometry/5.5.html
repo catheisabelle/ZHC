@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grade 5: Geometry</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+    }
+
+    header {
+      background-color: #fff;
+      padding: 20px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 2px solid #e0e0e0;
+    }
+
+    .progress-bar {
+      width: 80%;
+      height: 5px;
+      background-color: #e0e0e0;
+      margin: 20px auto;
+      position: relative;
+      border-radius: 10px;
+    }
+
+    .progress-bar .fill {
+      height: 100%;
+      background-color: #6a5acd;
+      width: 0%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-radius: 10px;
+      transition: width 0.5s ease-in-out;
+    }
+
+    .content {
+      padding: 30px;
+      max-width: 800px;
+      margin: 0 auto;
+      display: none;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+
+    .note, .analogy {
+      background-color: #f5f5f5;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .button {
+      background-color: #6a5acd;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #5a4db8;
+      transform: scale(1.05);
+    }
+
+    img {
+      display: block;
+      margin: 20px auto;
+      max-width: 45%;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .nav-buttons button {
+      width: 120px;
+    }
+
+    .close-button {
+      font-size: 24px;
+      color: black;
+      text-decoration: none;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .header-title {
+      font-size: 24px;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    /* Table styles */
+    table {
+      width: 90%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background-color: #fff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #6a5acd;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #e0e0e0;
+    }
+
+    .caption {
+      font-weight: bold;
+      background-color: #6a5acd;
+      color: white;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#" class="close-button">X</a>
+    <h1 class="header-title">Coordinates, Reflections, and Translations</h1>
+  </header>
+
+  <div class="progress-bar">
+    <div class="fill" id="progressFill"></div>
+  </div>
+
+  <!-- Page 0: Introduction -->
+  <div class="content" id="page0" style="display: block;">
+    <div class="note">Let’s learn about coordinates, plotting points, reflections, and translations!</div>
+    <div class="analogy">
+      Coordinates help us find specific locations on a grid or graph. We can use these to plot points, reflect shapes, or translate shapes to new positions.
+    </div>
+  </div>
+
+  <!-- Page 1: What Are Coordinates? -->
+  <div class="content" id="page1">
+    <div class="note">What Are Coordinates?</div>
+    <div class="analogy">
+      Coordinates are used to describe a specific location on a grid or graph. They are written as (x, y), where:
+      <ul>
+        <li><strong>x</strong> is the horizontal (left or right) position.</li>
+        <li><strong>y</strong> is the vertical (up or down) position.</li>
+      </ul>
+      <strong>Example:</strong> The coordinate (3, 2) means:
+      <ul>
+        <li>Move 3 units to the right on the x-axis.</li>
+        <li>Move 2 units up on the y-axis.</li>
+      </ul>
+      <img src="../images/coordinates.png" alt="Coordinates Example">
+    </div>
+  </div>
+
+  <!-- Page 2: How to Plot Coordinates -->
+  <div class="content" id="page2">
+    <div class="note">How to Plot Coordinates</div>
+    <div class="analogy">
+      To plot coordinates, follow these steps:
+      <ol>
+        <li>Start at the origin (0, 0), where the x-axis and y-axis cross.</li>
+        <li>Move horizontally to the x value and vertically to the y value.</li>
+        <li>Mark the point where you end up.</li>
+      </ol>
+      <strong>Example:</strong> To plot (4, 3), move:
+      <ul>
+        <li>4 units to the right on the x-axis (x = 4).</li>
+        <li>3 units up on the y-axis (y = 3).</li>
+      </ul>
+      <button id="start1Button" class="button">Start</button>
+    </div>
+  </div>
+
+  <!-- Page 3: Reflections -->
+  <div class="content" id="page3">
+    <div class="note">Reflections</div>
+    <div class="analogy">
+      A reflection is a flip of a shape over a line, like flipping a shape in a mirror.
+      <br><br>
+      Example: If a point is reflected over the y-axis, the x-coordinate changes sign:
+      <br>
+      Point (3, 2) reflects to (-3, 2).
+      <br><br>
+      <strong>Reflection Rule:</strong> Reflecting over the y-axis changes the sign of the x-coordinate.
+      <img src="../images/reflecting.png" alt="Reflection Example">
+    </div>
+  </div>
+
+  <!-- Page 4: Translations -->
+  <div class="content" id="page4">
+    <div class="note">Translations</div>
+    <div class="analogy">
+      A translation moves a shape without rotating or flipping it. Each point is shifted by a certain amount.
+      <br><br>
+      Example: If a point (2, 3) is translated 3 units right and 2 units down, the new point is:
+      <br>
+      (2 + 3, 3 - 2) = (5, 1).
+      <br><br>
+      <strong>Translation Rule:</strong> To translate a point, add or subtract the same amount to the x and y coordinates.
+      <img src="../images/translating.jpg" alt="Translation Example">
+    </div>
+  </div>
+
+  <div class="nav-buttons">
+    <button class="button" onclick="prevPage()">Back</button>
+    <button class="button" onclick="nextPage()">Next</button>
+  </div>
+
+  <script>
+    const progressFill = document.getElementById('progressFill');
+    const pages = document.querySelectorAll('.content');
+    let currentPage = 0;
+
+    // Function to go to the next page
+    function nextPage() {
+      if (currentPage < pages.length - 1) {
+        pages[currentPage].style.display = 'none';
+        currentPage++;
+        pages[currentPage].style.display = 'block';
+        progressFill.style.width = ((currentPage + 1) / pages.length) * 100 + '%';
+      }
+    }
+
+    // Function to go to the previous page
+    function prevPage() {
+      if (currentPage > 0) {
+        pages[currentPage].style.display = 'none';
+        currentPage--;
+        pages[currentPage].style.display = 'block';
+        progressFill.style.width = ((currentPage + 1) / pages.length) * 100 + '%';
+      }
+    }
+  </script>
+</body>
+</html>
